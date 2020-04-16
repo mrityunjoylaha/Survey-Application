@@ -1,5 +1,7 @@
 package com.lti.services.impl;
 
-public class RegistrationServiceImpl {
+import com.lti.services.IRegistrationService;
+
+public class RegistrationServiceImpl implements IRegistrationService {
 
 }

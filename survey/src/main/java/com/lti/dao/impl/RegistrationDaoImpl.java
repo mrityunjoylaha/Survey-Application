@@ -1,5 +1,7 @@
 package com.lti.dao.impl;
 
-public class RegistrationDaoImpl {
+import com.lti.dao.IRegistrationDao;
+
+public class RegistrationDaoImpl implements IRegistrationDao {
 
 }

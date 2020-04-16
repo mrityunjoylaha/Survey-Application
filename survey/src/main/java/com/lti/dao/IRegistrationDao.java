@@ -1,5 +1,14 @@
 package com.lti.dao;
 
-public interface IRegistrationDao {
+import java.util.List;
 
+import com.lti.models.Registration;
+
+public interface IRegistrationDao {
+	//Select details
+		public List<Registration> readAllRegistration();
+		
+		
+		//Insert details
+		public void createRegistration(Registration registration);
 }

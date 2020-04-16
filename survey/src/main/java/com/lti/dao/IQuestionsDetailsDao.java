@@ -1,5 +1,14 @@
 package com.lti.dao;
 
-public interface IQuestionsDetailsDao {
+import java.util.List;
 
+import com.lti.models.QuestionsDetails;
+
+public interface IQuestionsDetailsDao {
+	//Select details
+			public List<QuestionsDetails> readAllQuestionsDetails();
+			
+			
+			//Insert details
+			public void createQuestionsDetails(QuestionsDetails questionsDetails);
 }

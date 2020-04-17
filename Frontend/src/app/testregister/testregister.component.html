@@ -1,0 +1,49 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="\assets\logo.png" id="icon" alt="User Icon" />
+      </div>
+  
+      <!-- Login Form -->
+      <div class="content">
+      <form [formGroup]="userForm" (ngSubmit)="submit()">
+        <table>
+            <tr>
+                <td><label>Full Name</label></td>
+                <td><input type="text" placeholder="full name" formControlName="fullName" ></td>
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="email" placeholder="email" formControlName="email"></td>
+            </tr>
+            <tr>
+                <td><label>Company Name</label></td>
+                <td><input type="text" placeholder="company name" formControlName="companyName"></td>
+            </tr>
+            <tr>
+                <td><label>Job Role</label></td>
+                <td><input type="text" placeholder="job role" formControlName="jobRole" ></td>
+            </tr>
+            <tr>
+                <td><label>Total Count of the workers</label></td>
+                <td><input type="number" placeholder="count of employees" formControlName="totalUserOrg"></td>
+            </tr>
+            <tr>
+                <td><label>Country Region</label></td>
+                <td><input type="text" placeholder="country region" formControlName="countryRegion"></td>
+            </tr>
+        </table>
+      
+        <div class="col-sm-5" style="float:right;text-align: center;"><button type="submit" class="btn btn-danger" >Start Assessment</button></div>
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover">Forgot Password?</a>
+      </div>
+    </div>
+    </div>
+  </div>

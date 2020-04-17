@@ -50,8 +50,8 @@ export class Form1Component implements OnInit {
     
     this.result = data;
   
-    this.router.navigate(['two']);
    });
   
+   this.router.navigate(['register']);
   }
   }

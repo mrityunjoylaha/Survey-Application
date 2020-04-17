@@ -17,6 +17,8 @@ public class QuestionType {
 	@Column(name ="question_type_description")
 	private int questionTypeDescription;
 
+	
+	
 	public int getQuestionTypeId() {
 		return questionTypeId;
 	}

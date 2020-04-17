@@ -1,11 +1,18 @@
 package com.lti.models;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="questions_details")
@@ -36,14 +43,22 @@ public class QuestionsDetails {
 	private int childQuestionId;
 	
 	@Column(name ="created_datetime")
+	@DateTimeFormat
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime createdDateTime;
 	
 	@Column(name ="updated_datetime")
+	@DateTimeFormat
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime updatedDateTime;
 	
 	@Column(name ="isactive")
 	private boolean isActive;
 
+	@OneToMany(mappedBy="questionsDetails", cascade=CascadeType.ALL)
+	private Set<AnswerDetails> answerDetails;
+	
+	
 	public int getQuestionDetailsId() {
 		return questionDetailsId;
 	}

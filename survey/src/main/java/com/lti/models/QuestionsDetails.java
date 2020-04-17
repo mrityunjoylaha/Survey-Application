@@ -1,12 +1,13 @@
 package com.lti.models;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,48 +18,56 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name="questions_details")
 public class QuestionsDetails {
+	public List<AnswerDetails> getAnswerDetails() {
+		return answerDetails;
+	}
+
+	public void setAnswerDetails(List<AnswerDetails> answerDetails) {
+		this.answerDetails = answerDetails;
+	}
+
 	@Id
-	@Column(name ="question_details_id")
+//	@Column(name ="question_details_id")
 	private int questionDetailsId; 
 	
-	@Column(name ="form_id")
+//	@Column(name ="form_id")
 	private String formId;
 	
-	@Column(name ="question_type")
+//	@Column(name ="question_type")
 	private String questionType;
 	
-	@Column(name ="question_seq_no")
+//	@Column(name ="question_seq_no")
 	private int questionSeqNo;
 	
-	@Column(name ="question_description")
+//	@Column(name ="question_description")
 	private String questionDescription;
 	
-	@Column(name ="question_type_id")
+//	@Column(name ="question_type_id")
 	private int questionTypeId;
 	
-	@Column(name ="parent_question_id")
+//	@Column(name ="parent_question_id")
 	private int parentQuestionId;
 	
-	@Column(name ="child_question_id")
+//	@Column(name ="child_question_id")
 	private int childQuestionId;
 	
-	@Column(name ="created_datetime")
+//	@Column(name ="created_datetime")
 	@DateTimeFormat
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime createdDateTime;
 	
-	@Column(name ="updated_datetime")
+//	@Column(name ="updated_datetime")
 	@DateTimeFormat
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime updatedDateTime;
 	
-	@Column(name ="isactive")
+//	@Column(name ="isactive")
 	private boolean isActive;
 
-	@OneToMany(mappedBy="questionsDetails", cascade=CascadeType.ALL)
-	private Set<AnswerDetails> answerDetails;
-	
-	
+	@OneToMany(targetEntity=AnswerDetails.class, cascade=CascadeType.ALL)
+	@JoinColumn(name="id",referencedColumnName="questionDetailsId")
+	private List<AnswerDetails> answerDetails;
+
 	public int getQuestionDetailsId() {
 		return questionDetailsId;
 	}
@@ -154,7 +163,8 @@ public class QuestionsDetails {
 
 	public QuestionsDetails(int questionDetailsId, String formId, String questionType, int questionSeqNo,
 			String questionDescription, int questionTypeId, int parentQuestionId, int childQuestionId,
-			LocalDateTime createdDateTime, LocalDateTime updatedDateTime, boolean isActive) {
+			LocalDateTime createdDateTime, LocalDateTime updatedDateTime, boolean isActive,
+			List<AnswerDetails> answerDetails) {
 		super();
 		this.questionDetailsId = questionDetailsId;
 		this.formId = formId;
@@ -167,6 +177,7 @@ public class QuestionsDetails {
 		this.createdDateTime = createdDateTime;
 		this.updatedDateTime = updatedDateTime;
 		this.isActive = isActive;
+		this.answerDetails = answerDetails;
 	}
 
 	@Override
@@ -175,8 +186,11 @@ public class QuestionsDetails {
 				+ questionType + ", questionSeqNo=" + questionSeqNo + ", questionDescription=" + questionDescription
 				+ ", questionTypeId=" + questionTypeId + ", parentQuestionId=" + parentQuestionId + ", childQuestionId="
 				+ childQuestionId + ", createdDateTime=" + createdDateTime + ", updatedDateTime=" + updatedDateTime
-				+ ", isActive=" + isActive + "]";
+				+ ", isActive=" + isActive + ", answerDetails=" + answerDetails + "]";
 	}
+	
+	
+	
 	
 	
 }

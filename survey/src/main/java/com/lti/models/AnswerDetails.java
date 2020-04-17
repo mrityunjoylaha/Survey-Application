@@ -18,132 +18,86 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name="answer_details")
 public class AnswerDetails {
 	@Id
-	@Column(name ="answer_id")
+//	@Column(name ="answer_id")
 	private int answerId; 
 	
 //	@Column(name ="question_details_id")
 //	private int questionDetailsId;
 	
-	@Column(name ="answer_description")
+//	@Column(name ="answer_description")
 	private String answerDescription; 
 	
-	@Column(name ="question_type")
+//	@Column(name ="question_type")
 	private String questionType;
 	
-	@Column(name ="created_datetime")
+//	@Column(name ="created_datetime")
 	@DateTimeFormat
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime createdDateTime; 
 	
-	@Column(name ="updated_datetime")
+//	@Column(name ="updated_datetime")
 	@DateTimeFormat
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime updatedDateTime;
 	
-	@Column(name ="is_active")
+//	@Column(name ="is_active")
 	private boolean isActive;
-
-	
-	
-	@ManyToOne
-	@JoinColumn(name="question_details_id")
-	private QuestionsDetails questionsDetails;
-
-
 
 	public int getAnswerId() {
 		return answerId;
 	}
 
-
-
 	public void setAnswerId(int answerId) {
 		this.answerId = answerId;
 	}
-
-
 
 	public String getAnswerDescription() {
 		return answerDescription;
 	}
 
-
-
 	public void setAnswerDescription(String answerDescription) {
 		this.answerDescription = answerDescription;
 	}
-
-
 
 	public String getQuestionType() {
 		return questionType;
 	}
 
-
-
 	public void setQuestionType(String questionType) {
 		this.questionType = questionType;
 	}
-
-
 
 	public LocalDateTime getCreatedDateTime() {
 		return createdDateTime;
 	}
 
-
-
 	public void setCreatedDateTime(LocalDateTime createdDateTime) {
 		this.createdDateTime = createdDateTime;
 	}
-
-
 
 	public LocalDateTime getUpdatedDateTime() {
 		return updatedDateTime;
 	}
 
-
-
 	public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
 		this.updatedDateTime = updatedDateTime;
 	}
-
-
 
 	public boolean isActive() {
 		return isActive;
 	}
 
-
-
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-
-
-
-	public QuestionsDetails getQuestionsDetails() {
-		return questionsDetails;
-	}
-
-
-
-	public void setQuestionsDetails(QuestionsDetails questionsDetails) {
-		this.questionsDetails = questionsDetails;
-	}
-
-
 
 	public AnswerDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-
 	public AnswerDetails(int answerId, String answerDescription, String questionType, LocalDateTime createdDateTime,
-			LocalDateTime updatedDateTime, boolean isActive, QuestionsDetails questionsDetails) {
+			LocalDateTime updatedDateTime, boolean isActive) {
 		super();
 		this.answerId = answerId;
 		this.answerDescription = answerDescription;
@@ -151,17 +105,23 @@ public class AnswerDetails {
 		this.createdDateTime = createdDateTime;
 		this.updatedDateTime = updatedDateTime;
 		this.isActive = isActive;
-		this.questionsDetails = questionsDetails;
 	}
-
-
 
 	@Override
 	public String toString() {
 		return "AnswerDetails [answerId=" + answerId + ", answerDescription=" + answerDescription + ", questionType="
 				+ questionType + ", createdDateTime=" + createdDateTime + ", updatedDateTime=" + updatedDateTime
-				+ ", isActive=" + isActive + ", questionsDetails=" + questionsDetails + "]";
+				+ ", isActive=" + isActive + "]";
 	}
+
+	
+	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name="question_details_id")
+//	private QuestionsDetails questionsDetails;
+
+
+
 	
 	
 	

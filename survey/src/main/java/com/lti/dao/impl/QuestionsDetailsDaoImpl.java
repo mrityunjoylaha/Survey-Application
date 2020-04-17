@@ -23,7 +23,9 @@ public class QuestionsDetailsDaoImpl implements IQuestionsDetailsDao {
 
 	@Override
 	public List<QuestionsDetails> readAllQuestionsDetails() {
-		String jpql = "From QuestionsDetails";
+		String jpql = "SELECT q.questionDescription, a.answerDescription"
+				+ " FROM QuestionDetails q Join AnswerDetails a WHERE q.questionDetailsId = a.questionDetailsId ";
+				
 		TypedQuery<QuestionsDetails> tquery = entityManager.createQuery(jpql, QuestionsDetails.class);
 		System.out.println(tquery);
 		return tquery.getResultList();
